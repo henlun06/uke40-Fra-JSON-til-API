@@ -1,7 +1,4 @@
-// URL-er til JSON-filene
-
-const justJokesURL =
-    "https://terjetheteacher.github.io/some-jokes/justJokes.json";
+// URL til JSON-filen
 
 const jokesURL =
     "https://terjetheteacher.github.io/some-jokes/jokes.json";
@@ -9,87 +6,139 @@ const jokesURL =
 
 // Henter elementene fra HTML
 
-const antall = document.getElementById("antall");
-const forste = document.getElementById("forste");
-const siste = document.getElementById("siste");
+const forsteVits =
+    document.getElementById("forsteVits");
 
-const justJokesElement =
-    document.getElementById("justJokes");
+const alleVitser =
+    document.getElementById("alleVitser");
 
-const jokesElement =
-    document.getElementById("jokes");
+const tilfeldigVits =
+    document.getElementById("tilfeldigVits");
 
+const tilfeldigKnapp =
+    document.getElementById("tilfeldigKnapp");
 
-// Henter justJokes.json
+const sok =
+    document.getElementById("sok");
 
-async function hentJustJokes() {
-
-    const response = await fetch(justJokesURL);
-
-    const data = await response.json();
-
-
-    // Finner alle nøklene
-    const ids = Object.keys(data);
+const antall =
+    document.getElementById("antall");
 
 
-    // Antall vitser
-    antall.textContent = ids.length;
+// Her lagrer vi alle vitsene
+
+let vitser = [];
 
 
-    // Første vits
-    forste.textContent = data[ids[0]];
+// Henter JSON-filen
 
-
-    // Siste vits
-    siste.textContent = data[ids[ids.length - 1]];
-
-
-    // Viser alle vitser
-
-    ids.forEach(id => {
-
-        const p = document.createElement("p");
-
-        p.textContent =
-            `${id}: ${data[id]}`;
-
-        justJokesElement.appendChild(p);
-
-    });
-}
-
-
-// Henter jokes.json
-
-async function hentJokes() {
+async function hentVitser() {
 
     const response = await fetch(jokesURL);
 
     const data = await response.json();
 
+    // Lagrer vitse-listen
 
-    // Går gjennom jokes-listen
+    vitser = data.jokes;
 
-    data.jokes.forEach(vits => {
 
-        const div = document.createElement("div");
+    // Teller antall vitser
+
+    antall.textContent = vitser.length;
+
+
+    // Viser første vits
+
+    forsteVits.textContent =
+        vitser[0].joke;
+
+
+    // Viser alle vitsene
+
+    visAlleVitser(vitser);
+}
+
+
+// Funksjon som viser alle vitser
+
+function visAlleVitser(liste) {
+
+    alleVitser.innerHTML = "";
+
+
+    if (liste.length === 0) {
+
+        alleVitser.innerHTML =
+            "<p>😕 Fant ingen vitser.</p>";
+
+        return;
+    }
+
+
+    liste.forEach(vits => {
+
+        const div =
+            document.createElement("div");
 
         div.className = "vits";
 
+
         div.innerHTML = `
-            <strong>ID: ${vits.id}</strong>
+            <strong>Vits ${vits.id}</strong>
             <p>${vits.joke}</p>
         `;
 
-        jokesElement.appendChild(div);
+
+        alleVitser.appendChild(div);
 
     });
 }
 
 
-// Starter funksjonene
+// Tilfeldig vits
 
-hentJustJokes();
+tilfeldigKnapp.addEventListener(
+    "click",
+    () => {
 
-hentJokes();
+        const tilfeldigTall =
+            Math.floor(
+                Math.random() * vitser.length
+            );
+
+
+        tilfeldigVits.textContent =
+            vitser[tilfeldigTall].joke;
+
+    }
+);
+
+
+// Søk etter ord
+
+sok.addEventListener(
+    "input",
+    () => {
+
+        const søkeord =
+            sok.value.toLowerCase().trim();
+
+
+        const resultat =
+            vitser.filter(vits =>
+                vits.joke
+                    .toLowerCase()
+                    .includes(søkeord)
+            );
+
+
+        visAlleVitser(resultat);
+
+    }
+);
+
+
+// Start programmet
+
+hentVitser();

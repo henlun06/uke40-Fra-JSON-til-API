@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Oppgave 4 - Vitser</title>
+    <title>Vitsebibliotek</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,73 +13,79 @@
 <body>
 
     <header>
-        <h1>😂 Utforsk vitsefilene</h1>
-        <p>Oppgave 4 – JSON og datastrukturer</p>
+        <h1>😂 Vitsebibliotek</h1>
+        <p>Oppgave 5 – Les vitsefilene i kode</p>
     </header>
+
 
     <main>
 
+        <!-- FØRSTE VITS -->
+
+        <section class="kort">
+
+            <h2>🥇 Første vits</h2>
+
+            <p id="forsteVits">
+                Laster vits...
+            </p>
+
+        </section>
+
+
+        <!-- TILFELDIG VITS -->
+
+        <section class="tilfeldig">
+
+            <h2>🎲 Tilfeldig vits</h2>
+
+            <p id="tilfeldigVits">
+                Trykk på knappen!
+            </p>
+
+            <button id="tilfeldigKnapp">
+                Vis tilfeldig vits
+            </button>
+
+        </section>
+
+
+        <!-- SØK -->
+
+        <section class="kort">
+
+            <h2>🔎 Søk etter en vits</h2>
+
+            <input
+                type="text"
+                id="sok"
+                placeholder="Skriv et ord..."
+            >
+
+        </section>
+
+
+        <!-- INFO -->
+
         <section class="info">
 
-            <div class="kort">
-                <h2>📊 Antall vitser</h2>
-                <p id="antall">Laster...</p>
-            </div>
-
-            <div class="kort">
-                <h2>🥇 Første vits</h2>
-                <p id="forste">Laster...</p>
-            </div>
-
-            <div class="kort">
-                <h2>🏁 Siste vits</h2>
-                <p id="siste">Laster...</p>
+            <div>
+                <strong id="antall">0</strong>
+                <span>vitser</span>
             </div>
 
         </section>
 
 
-        <section class="fil">
+        <!-- ALLE VITSER -->
 
-            <h2>📁 justJokes.json</h2>
+        <section class="kort">
 
-            <p>
-                Denne filen inneholder vitser under tall som nøkler.
-            </p>
+            <h2>😂 Alle vitser</h2>
 
-            <div id="justJokes"></div>
-
-        </section>
-
-
-        <section class="fil">
-
-            <h2>📁 jokes.json</h2>
-
-            <p>
-                Denne filen er mer avansert og inneholder metadata,
-                ID og selve vitsen.
-            </p>
-
-            <div id="jokes"></div>
-
-        </section>
-
-
-        <section class="sammenligning">
-
-            <h2>🔎 Sammenligning</h2>
-
-            <p>
-                <strong>justJokes.json:</strong>
-                Et objekt med vitser som ligger under tallnøkler.
-            </p>
-
-            <p>
-                <strong>jokes.json:</strong>
-                Et objekt som inneholder metadata og en liste
-                med vits-objekter.
-            </p>
+            <div id="alleVitser">
+                Laster vitser...
+            </div>
 
         </section>
 
@@ -87,7 +93,7 @@
 
 
     <footer>
-        <p>Oppgave 4 – JSON</p>
+        <p>Oppgave 5 – JSON og JavaScript</p>
     </footer>
 
 
