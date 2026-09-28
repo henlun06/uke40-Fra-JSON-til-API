@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Oppgave 4 - Vitser</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>😂 Utforsk vitsefilene</h1>
+        <p>Oppgave 4 – JSON og datastrukturer</p>
+    </header>
+
+    <main>
+
+        <section class="info">
+
+            <div class="kort">
+                <h2>📊 Antall vitser</h2>
+                <p id="antall">Laster...</p>
+            </div>
+
+            <div class="kort">
+                <h2>🥇 Første vits</h2>
+                <p id="forste">Laster...</p>
+            </div>
+
+            <div class="kort">
+                <h2>🏁 Siste vits</h2>
+                <p id="siste">Laster...</p>
+            </div>
+
+        </section>
+
+
+        <section class="fil">
+
+            <h2>📁 justJokes.json</h2>
+
+            <p>
+                Denne filen inneholder vitser under tall som nøkler.
+            </p>
+
+            <div id="justJokes"></div>
+
+        </section>
+
+
+        <section class="fil">
+
+            <h2>📁 jokes.json</h2>
+
+            <p>
+                Denne filen er mer avansert og inneholder metadata,
+                ID og selve vitsen.
+            </p>
+
+            <div id="jokes"></div>
+
+        </section>
+
+
+        <section class="sammenligning">
+
+            <h2>🔎 Sammenligning</h2>
+
+            <p>
+                <strong>justJokes.json:</strong>
+                Et objekt med vitser som ligger under tallnøkler.
+            </p>
+
+            <p>
+                <strong>jokes.json:</strong>
+                Et objekt som inneholder metadata og en liste
+                med vits-objekter.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>Oppgave 4 – JSON</p>
+    </footer>
+
+
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>
