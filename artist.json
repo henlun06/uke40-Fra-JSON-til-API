@@ -1,0 +1,43 @@
+{
+  "artists": [
+    {
+      "name": "The Weeknd",
+      "genre": "Pop",
+      "country": "Canada",
+      "details": {
+        "birthYear": 1990,
+        "activeSince": 2010
+      },
+      "music": {
+        "albums": 6,
+        "popularSong": "Blinding Lights"
+      }
+    },
+    {
+      "name": "Drake",
+      "genre": "Hip-Hop",
+      "country": "Canada",
+      "details": {
+        "birthYear": 1986,
+        "activeSince": 2006
+      },
+      "music": {
+        "albums": 8,
+        "popularSong": "God's Plan"
+      }
+    },
+    {
+      "name": "Billie Eilish",
+      "genre": "Pop",
+      "country": "USA",
+      "details": {
+        "birthYear": 2001,
+        "activeSince": 2015
+      },
+      "music": {
+        "albums": 3,
+        "popularSong": "bad guy"
+      }
+    }
+  ]
+}
