@@ -1,8 +1,11 @@
-const spill = [
-  "Minecraft",
-  "Roblox",
-  "Fortnite",
-  "Valorant"
+const favorittMat = [
+    "Pizza",
+    "Taco",
+    "Burger",
+    "Pasta",
+    "Sushi"
 ];
 
-console.log(spill[0]);
+console.log(favorittMat[0]);
+console.log(favorittMat[favorittMat.length - 1]);
+console.log(favorittMat.length);
