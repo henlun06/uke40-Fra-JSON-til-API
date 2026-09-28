@@ -3,13 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artister</title>
+
+    <title>Mine artister</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1>Mine artister</h1>
+    <header>
+        <div class="header-content">
+            <div>
+                <p class="small-title"> MUSIKKBIBLIOTEK</p>
+                <h1>Mine artister</h1>
+                <p class="intro">
+                    Utforsk favorittartistene mine og lær mer om musikken deres.
+                </p>
+            </div>
 
-    <div id="artister"></div>
+            <button id="temaKnapp" class="theme-button">
+                🌙 Mørk modus
+            </button>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- STATISTIKK -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <span></span>
+                <strong id="antallArtister">0</strong>
+                <p>Artister</p>
+            </div>
+
+            <div class="stat-card">
+                <span></span>
+                <strong id="antallAlbum">0</strong>
+                <p>Album totalt</p>
+            </div>
+
+            <div class="stat-card">
+                <span></span>
+                <strong id="antallLand">0</strong>
+                <p>Land</p>
+            </div>
+
+            <div class="stat-card">
+                <span></span>
+                <strong id="antallSjangre">0</strong>
+                <p>Sjangre</p>
+            </div>
+
+        </section>
+
+
+        <!-- SØK OG FILTER -->
+        <section class="controls">
+
+            <div class="search-box">
+                
+                <input
+                    type="text"
+                    id="sok"
+                    placeholder="Søk etter en artist..."
+                >
+            </div>
+
+            <select id="sjangerFilter">
+                <option value="alle">Alle sjangre</option>
+            </select>
+
+        </section>
+
+
+        <!-- ARTISTER -->
+        <section>
+
+            <div class="section-title">
+                <h2>Alle artister</h2>
+                <span id="resultatTekst"></span>
+            </div>
+
+            <div id="artister" class="artist-grid"></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>Mitt musikkbibliotek</p>
+        <p>Laget med HTML, CSS, JavaScript og JSON</p>
+    </footer>
+
 
     <script type="module" src="script.js"></script>
 
