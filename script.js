@@ -1,4 +1,4 @@
-import data from "./artists.json" with { type: "json" };
+import data from "./artist.json" with { type: "json" };
 
 const artister = document.getElementById("artister");
 
