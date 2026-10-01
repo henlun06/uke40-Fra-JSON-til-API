@@ -3,12 +3,186 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>JavaScript liste</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Oppgave 2 – Lister og favorittmat</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Min favorittmat</h1>
+    <header>
+        <p class="small-title">OPPGAVE 2 – LISTER OG OPPSLAG</p>
+        <h1>Min favorittmat</h1>
+        <p class="intro">
+            Her tester jeg hvordan lister fungerer i JavaScript. Jeg henter ut
+            elementer med plasseringen til elementet, teller hvor mange det er,
+            og legger til og fjerner elementer.
+        </p>
+    </header>
+
+
+    <main>
+
+        <!-- SPØRSMÅLENE FRA OPGAVEN -->
+
+        <section class="kort">
+
+            <h2>📋 Oppslag i en liste</h2>
+
+            <p class="forklaring">
+                Listen under heter <code>spill</code> og inneholder 4 elementer.
+                Plasseringen i en liste begynner alltid på <strong>0</strong>.
+            </p>
+
+            <pre class="kode">const spill = [
+    "Minecraft",
+    "Roblox",
+    "Fortnite",
+    "Valorant"
+];</pre>
+
+            <div class="sporsmal">
+
+                <div class="sporsmal-kort">
+                    <h3>Hva skrives ut?</h3>
+                    <p><code>console.log(spill[0])</code></p>
+                    <p class="svar">Skriver ut <strong>Minecraft</strong></p>
+                    <p class="liten">
+                        Plassering 0 er alltid det første elementet.
+                    </p>
+                </div>
+
+                <div class="sporsmal-kort">
+                    <h3>Hva skjer med spill[2]?</h3>
+                    <p><code>console.log(spill[2])</code></p>
+                    <p class="svar">Skriver ut <strong>Fortnite</strong></p>
+                    <p class="liten">
+                        Vi teller fra 0: 0, 1, 2 – altså det tredje elementet.
+                    </p>
+                </div>
+
+                <div class="sporsmal-kort">
+                    <h3>Hva skjer med spill[10]?</h3>
+                    <p><code>console.log(spill[10])</code></p>
+                    <p class="svar">Skriver ut <strong>undefined</strong></p>
+                    <p class="liten">
+                        Listen har bare plassering 0–3. Det finnes ingen
+                        plassering 10, så JavaScript gir oss
+                        <code>undefined</code> (udefinert).
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAVORITTMAT: FØRSTE, SISTE OG ANTALL -->
+
+        <section class="kort">
+
+            <h2>🍕 Favorittmaten min</h2>
+
+            <div class="statistikk">
+
+                <div class="stat">
+                    <span>0️⃣</span>
+                    <strong id="forsteMat">–</strong>
+                    <p>Første element</p>
+                    <small>favorittMat[0]</small>
+                </div>
+
+                <div class="stat">
+                    <span>🔚</span>
+                    <strong id="sisteMat">–</strong>
+                    <p>Siste element</p>
+                    <small>favorittMat[length - 1]</small>
+                </div>
+
+                <div class="stat">
+                    <span>🔢</span>
+                    <strong id="antallMat">–</strong>
+                    <p>Antall elementer</p>
+                    <small>favorittMat.length</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEGGE TIL OG FJERNE -->
+
+        <section class="kort">
+
+            <h2>➕ Legge til og fjerne</h2>
+
+            <p class="forklaring">
+                Med <code>.push()</code> legger jeg til et element bakerst i
+                listen. Med <code>.pop()</code> fjerner jeg det siste elementet.
+                Med <code>.splice()</code> fjerner jeg et element på en bestemt
+                plassering.
+            </p>
+
+            <div class="kontroller">
+
+                <input
+                    type="text"
+                    id="matInn"
+                    placeholder="Feks. Kebab"
+                    maxlength="30"
+                >
+
+                <button id="leggTil" class="knapp gronn">
+                    Legg til
+                </button>
+
+                <button id="fjernSiste" class="knapp rod">
+                    Fjern siste
+                </button>
+
+                <button id="fjernForste" class="knapp rod">
+                    Fjern første
+                </button>
+
+                <button id="nullstill" class="knapp graa">
+                    Nullstill
+                </button>
+
+            </div>
+
+            <p id="matMelding" class="melding" role="status"></p>
+
+        </section>
+
+
+        <!-- ALLE ELEMENTENE MED EN LØKKE -->
+
+        <section class="kort">
+
+            <div class="seksjon-tittel">
+                <h2>📝 Alle elementene</h2>
+                <span id="listeAntall"></span>
+            </div>
+
+            <p class="forklaring">
+                Alle elementene skrives ut med en <code>for...of</code>-løkke.
+            </p>
+
+            <ol id="matListe" class="mat-liste"></ol>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>Oppgave 2 – Fra JSON til API</p>
+        <p>Laget med HTML, CSS og JavaScript</p>
+    </footer>
+
 
     <script src="script.js"></script>
 

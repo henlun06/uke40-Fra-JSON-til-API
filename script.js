@@ -1,4 +1,5 @@
-import data from "./artist.json" with { type: "json" };
+// URL til JSON-filen min (Oppgave 1)
+const artistURL = "./artist.json";
 
 
 // Henter elementene fra HTML
@@ -14,9 +15,86 @@ const antallSjangre = document.getElementById("antallSjangre");
 
 const temaKnapp = document.getElementById("temaKnapp");
 
+const utvalgtArtist = document.getElementById("utvalgtArtist");
+const byttArtist = document.getElementById("byttArtist");
 
-// Lagrer alle artistene
-const alleArtister = data.artists;
+const feilMelding = document.getElementById("feilMelding");
+const feilTekst = document.getElementById("feilTekst");
+
+
+// Alle artistene. Fylles inn når vi har lest filen.
+let alleArtister = [];
+
+
+// Hvilken artist vi viser i "Utvalgt artist"
+let valgtIndex = 0;
+
+
+// -------------------------
+// VIS ÉN ARTIST
+// -------------------------
+
+function visEnArtist(index) {
+
+    const artist = alleArtister[index];
+
+    // songs er en liste inne i artisten
+    const sangliste = artist.music.songs
+        .map(sang => `<li>${sang}</li>`)
+        .join("");
+
+    utvalgtArtist.innerHTML = `
+        <div class="utvalgt-header">
+            <div class="artist-icon">🎤</div>
+            <div>
+                <h2>${artist.name}</h2>
+                <p class="tekst">${artist.genre} fra ${artist.country}</p>
+            </div>
+        </div>
+
+        <div class="artist-info">
+            <div>
+                <span>Sjanger</span>
+                <strong>${artist.genre}</strong>
+            </div>
+            <div>
+                <span>Land</span>
+                <strong>${artist.country}</strong>
+            </div>
+            <div>
+                <span>Født</span>
+                <strong>${artist.details.birthYear}</strong>
+            </div>
+            <div>
+                <span>Aktiv siden</span>
+                <strong>${artist.details.activeSince}</strong>
+            </div>
+            <div>
+                <span>Album</span>
+                <strong>${artist.music.albums}</strong>
+            </div>
+        </div>
+
+        <div class="song">
+            🎵 Populær sang
+            <strong>${artist.music.popularSong}</strong>
+        </div>
+
+        <div class="sanger">
+            <h3>Andre sanger (${artist.music.songs.length})</h3>
+            <ul>${sangliste}</ul>
+        </div>
+    `;
+}
+
+
+// -------------------------
+// FEILHÅNDTERING
+// -------------------------
+
+function visFeilmelding() {
+    feilMelding.hidden = false;
+}
 
 
 // -------------------------
@@ -245,11 +323,64 @@ temaKnapp.addEventListener("click", () => {
 
 
 // -------------------------
+// BYTT UTVALGT ARTIST
+// -------------------------
+
+byttArtist.addEventListener("click", () => {
+
+    valgtIndex = Math.floor(
+        Math.random() * alleArtister.length
+    );
+
+    visEnArtist(valgtIndex);
+
+});
+
+
+// -------------------------
+// LESER JSON-FILEN
+// -------------------------
+
+async function hentArtister() {
+
+    try {
+
+        const svar = await fetch(artistURL);
+
+        if (!svar.ok) {
+            throw new Error(
+                `Serveren svarte med ${svar.status}`
+            );
+        }
+
+        const data = await svar.json();
+
+        alleArtister = data.artists;
+
+        console.log("Antall artister lest:", alleArtister.length);
+        console.log("Første artist:", alleArtister[0]);
+
+
+        // Nå kan vi bygge siden
+        lagStatistikk();
+        lagSjangerFilter();
+        visArtister(alleArtister);
+        visEnArtist(0);
+
+    } catch (feil) {
+
+        console.error("Klarte ikke å hente artist.json:", feil);
+
+        feilTekst.textContent = feil.message;
+        visFeilmelding();
+
+    }
+
+}
+
+
+// -------------------------
 // START
 // -------------------------
 
-lagStatistikk();
-
-lagSjangerFilter();
-
-visArtister(alleArtister);
+hentArtister();

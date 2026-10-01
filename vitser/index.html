@@ -20,22 +20,206 @@
 
     <main>
 
-        <!-- FØRSTE VITS -->
+        <!-- FEILHÅNDTERING -->
+
+        <div id="feilMelding" class="feil-melding" hidden>
+            <strong>⚠️ Kunne ikke hente vitsene.</strong>
+            <p id="feilTekst"></p>
+            <p class="liten">
+                Sjekk at du har internett, og at nettsiden kjøres fra en
+                lokal webserver (for eksempel <code>Live Server</code>).
+            </p>
+        </div>
+
+
+        <!-- OPPGAVE 4: UTFORSK FILENE -->
 
         <section class="kort">
 
-            <h2>🥇 Første vits</h2>
+            <h2>🔍 Utforsk vitsefilene</h2>
 
-            <p id="forsteVits">
-                Laster vits...
+            <p class="forklaring">
+                Før jeg bruker filene i kode undersøker jeg hvordan de er
+                bygget opp. Her er resultatet.
             </p>
+
+            <div class="sammenligning">
+
+                <div class="fil">
+                    <h3>justJokes.json</h3>
+                    <p class="tag">Enkel – kun vitser</p>
+
+                    <ul class="egenskaper">
+                        <li>Toppnivå er et <strong>objekt</strong>,
+                            ikke en liste</li>
+                        <li>Nøklene er <code>"1"</code>,
+                            <code>"2"</code>, …</li>
+                        <li>Verdiene er <strong>tekster</strong>
+                            (selve vitsen)</li>
+                        <li>11 nøkler</li>
+                    </ul>
+
+                    <p class="liten">
+                        Fordi det er et objekt, må jeg bruke
+                        <code>Object.values()</code> for å få en liste.
+                    </p>
+                </div>
+
+                <div class="fil">
+                    <h3>jokes.json</h3>
+                    <p class="tag">Avansert – med metadata</p>
+
+                    <ul class="egenskaper">
+                        <li>Toppnivå er et objekt med <strong>2 nøkler</strong>:
+                            <code>metadata</code> og <code>jokes</code></li>
+                        <li><code>metadata</code> er en tekst om filen</li>
+                        <li><code>jokes</code> er en <strong>liste</strong>
+                            med 11 <strong>objekter</strong></li>
+                        <li>Hvert objekt har <code>id</code> og
+                            <code>joke</code></li>
+                    </ul>
+
+                    <p class="liten">
+                        Her kan jeg gå rett inn med
+                        <code>data.jokes[0].joke</code>, og jeg får ID-en
+                        med <code>data.jokes[0].id</code>.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="sammenlign-boks">
+                <h3>🔀 Forskjellene</h3>
+                <ul>
+                    <li><strong>Toppstruktur:</strong> begge er objekter,
+                        men bare jokes.json har en liste inne i seg.</li>
+                    <li><strong>Metadata:</strong> jokes.json har
+                        <code>metadata</code>, justJokes.json har ikke det.</li>
+                    <li><strong>Innhold per vits:</strong> jokes.json gir ID
+                        og vits som to separate felter. justJokes.json har
+                        bare selve vitsen som verdi.</li>
+                    <li><strong>Antall vitser:</strong> begge har 11 – de
+                        inneholder de samme vitsene.</li>
+                    <li><strong>Bruk:</strong> justJokes.json er raskere å
+                        bruke, mens jokes.json er bedre når man vil lagre
+                        ekstra informasjon.</li>
+                </ul>
+            </div>
+
+        </section>
+
+
+        <!-- OPPGAVE 5: FØRSTE, SISTE OG ANTALL -->
+
+        <section class="kort">
+
+            <h2>📊 Første, siste og antall</h2>
+
+            <div class="info">
+
+                <div>
+                    <span>🥇</span>
+                    <strong id="forsteVits">–</strong>
+                    <p>Første vits</p>
+                    <small>jokes[0]</small>
+                </div>
+
+                <div>
+                    <span>🥈</span>
+                    <strong id="sisteVits">–</strong>
+                    <p>Siste vits</p>
+                    <small>jokes[length - 1]</small>
+                </div>
+
+                <div>
+                    <span>🔢</span>
+                    <strong id="antall">0</strong>
+                    <p>Antall vitser</p>
+                    <small>jokes.length</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ÉN VITS OM GANGEN -->
+
+        <section class="kort">
+
+            <h2>🎠 En vits om gangen</h2>
+
+            <p class="forklaring">
+                Her kan jeg bla gjennom vitsene én av gangen, som en meny.
+            </p>
+
+            <div class="vits-boks">
+
+                <p id="vitsValg">Trykk på knappene for å bla.</p>
+
+                <div class="bla-knapper">
+                    <button id="forrige" class="knapp">
+                        ◀ Forrige
+                    </button>
+
+                    <button id="tilfeldigValg" class="knapp">
+                        🎲 Tilfeldig
+                    </button>
+
+                    <button id="neste" class="knapp">
+                        Neste ▶
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MENY: VELG FIL -->
+
+        <section class="kort">
+
+            <h2>📁 Velg hvilken fil jeg skal lese</h2>
+
+            <p class="forklaring">
+                Oppgaven nevner to filer. Her kan du velge selv, og jeg henter
+                fra den filen du velger.
+            </p>
+
+            <div class="kontroller">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="fil"
+                        id="velgJokes"
+                        value="jokes"
+                        checked
+                    >
+                    jokes.json (avansert)
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="fil"
+                        id="velgJustJokes"
+                        value="justJokes"
+                    >
+                    justJokes.json (enkel)
+                </label>
+
+            </div>
+
+            <p id="valgtFil" class="liten"></p>
 
         </section>
 
 
         <!-- TILFELDIG VITS -->
 
-        <section class="tilfeldig">
+        <section class="kort">
 
             <h2>🎲 Tilfeldig vits</h2>
 
@@ -43,7 +227,7 @@
                 Trykk på knappen!
             </p>
 
-            <button id="tilfeldigKnapp">
+            <button id="tilfeldigKnapp" class="knapp">
                 Vis tilfeldig vits
             </button>
 
@@ -65,23 +249,14 @@
         </section>
 
 
-        <!-- INFO -->
-
-        <section class="info">
-
-            <div>
-                <strong id="antall">0</strong>
-                <span>vitser</span>
-            </div>
-
-        </section>
-
-
         <!-- ALLE VITSER -->
 
         <section class="kort">
 
-            <h2>😂 Alle vitser</h2>
+            <div class="seksjon-tittel">
+                <h2>😂 Alle vitser</h2>
+                <span id="antallViser"></span>
+            </div>
 
             <div id="alleVitser">
                 Laster vitser...

@@ -1,16 +1,49 @@
-// URL til JSON-filen
+// -------------------------
+// FILENE VI HAR Å VELGE MELLOM
+// -------------------------
 
-const jokesURL =
-    "https://terjetheteacher.github.io/some-jokes/jokes.json";
+// Lokale filer ligger i mappen sammen med index.html
+const filer = {
+    jokes: {
+        navn: "jokes.json",
+        url: "./jokes.json",
+        type: "Avansert – objekt med liste"
+    },
+    justJokes: {
+        navn: "justJokes.json",
+        url: "./justJokes.json",
+        type: "Enkel – bare nøkler og tekster"
+    }
+};
 
 
-// Henter elementene fra HTML
+// Hvilken fil er valgt nå
+let valgtFil = "jokes";
+
+
+// Her lagrer vi alle vitsene
+let vitser = [];
+
+
+// Hvilken vits vi ser i "én vits om gangen"
+let vitsIndex = 0;
+
+
+// -------------------------
+// HENTER ELEMENTENE FRA HTML
+// -------------------------
 
 const forsteVits =
     document.getElementById("forsteVits");
 
+const sisteVits =
+    document.getElementById("sisteVits");
+
 const alleVitser =
     document.getElementById("alleVitser");
+
+const antallViser =
+    document.getElementById("antallViser");
 
 const tilfeldigVits =
     document.getElementById("tilfeldigVits");
@@ -18,16 +51,20 @@ const tilfeldigVits =
 const tilfeldigKnapp =
     document.getElementById("tilfeldigKnapp");
 
-const sok =
-    document.getElementById("sok");
+const vitsValg =
+    document.getElementById("vitsValg");
 
-const antall =
-    document.getElementById("antall");
+const forrige = document.getElementById("forrige");
+const neste = document.getElementById("neste");
+const tilfeldigValg =
+    document.getElementById("tilfeldigValg");
 
+const sok = document.getElementById("sok");
+const antall = document.getElementById("antall");
+const valgtFilTekst = document.getElementById("valgtFil");
 
-// Her lagrer vi alle vitsene
-
-let vitser = [];
+const feilMelding = document.getElementById("feilMelding");
+const feilTekst = document.getElementById("feilTekst");
 
 
 // Henter JSON-filen

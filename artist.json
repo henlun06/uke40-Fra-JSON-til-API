@@ -10,7 +10,12 @@
       },
       "music": {
         "albums": 6,
-        "popularSong": "Blinding Lights"
+        "popularSong": "Blinding Lights",
+        "songs": [
+          "Blinding Lights",
+          "Save Your Tears",
+          "Starboy"
+        ]
       }
     },
     {
@@ -23,7 +28,12 @@
       },
       "music": {
         "albums": 8,
-        "popularSong": "God's Plan"
+        "popularSong": "God's Plan",
+        "songs": [
+          "God's Plan",
+          "Hotline Bling",
+          "In My Feelings"
+        ]
       }
     },
     {
@@ -36,7 +46,48 @@
       },
       "music": {
         "albums": 3,
-        "popularSong": "bad guy"
+        "popularSong": "bad guy",
+        "songs": [
+          "bad guy",
+          "Ocean Eyes",
+          "Everything I Wanted"
+        ]
+      }
+    },
+    {
+      "name": "Aurora",
+      "genre": "Alternative",
+      "country": "Norway",
+      "details": {
+        "birthYear": 1996,
+        "activeSince": 2015
+      },
+      "music": {
+        "albums": 4,
+        "popularSong": "Runaway",
+        "songs": [
+          "Runaway",
+          "A Different Road",
+          "Yellow Light"
+        ]
+      }
+    },
+    {
+      "name": "Kygo",
+      "genre": "Electronic",
+      "country": "Norway",
+      "details": {
+        "birthYear": 1991,
+        "activeSince": 2014
+      },
+      "music": {
+        "albums": 3,
+        "popularSong": "Firestone",
+        "songs": [
+          "Firestone",
+          "Stole the Show",
+          "Higher Love"
+        ]
       }
     }
   ]

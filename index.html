@@ -30,7 +30,43 @@
 
     <main>
 
+        <!-- FEILHÅNDTERING -->
+
+        <div id="feilMelding" class="feil-melding" hidden>
+            <strong>⚠️ Kunne ikke lese JSON-filen.</strong>
+            <p id="feilTekst"></p>
+            <p class="liten">
+                Husk å kjøre nettsiden fra en lokal webserver
+                (for eksempel <code>Live Server</code> i VS Code), ikke ved å
+                dobbeltklikke på filen.
+            </p>
+        </div>
+
+
+        <!-- ÉN ARTIST (KRAV I OPPGAVE 3) -->
+
+        <section class="kort">
+
+            <div class="seksjon-tittel">
+                <h2>⭐ Utvalgt artist</h2>
+                <button id="byttArtist" class="knapp">
+                    🎲 Vis en tilfeldig artist
+                </button>
+            </div>
+
+            <p class="forklaring">
+                Oppgaven krever at jeg viser <strong>én</strong> artist fra
+                JSON-filen. Jeg henter den med <code>alleArtister[0]</code>,
+                og du kan velge en annen med knappen.
+            </p>
+
+            <div id="utvalgtArtist" class="utvalgt"></div>
+
+        </section>
+
+
         <!-- STATISTIKK -->
+
         <section class="stats">
 
             <div class="stat-card">

@@ -1,0 +1,49 @@
+{
+  "metadata": "A collection of jokes to be used freely as a practice for students learning about JavaScript Object Notation (JSON).",
+  "jokes": [
+    {
+      "id": "1",
+      "joke": "Where do generals keep their armies? In their sleevies!"
+    },
+    {
+      "id": "2",
+      "joke": "I'm thinking of reasons to go to Switzerland. The flag is a big plus."
+    },
+    {
+      "id": "3",
+      "joke": "I didn't like my beard at first. Then it grew on me."
+    },
+    {
+      "id": "4",
+      "joke": "Why don't you starve in the desert? Because of the sand which is there."
+    },
+    {
+      "id": "5",
+      "joke": "Why can't a bicycle stand on its own? It's two-tired."
+    },
+    {
+      "id": "6",
+      "joke": "Found out I was color blind the other day. That one came right out of the orange."
+    },
+    {
+      "id": "7",
+      "joke": "A burger walks into a bar. The bartender says 'Sorry, we don't serve food here'"
+    },
+    {
+      "id": "8",
+      "joke": "What's more amazing than a talking dog? A spelling bee."
+    },
+    {
+      "id": "9",
+      "joke": "Orion's Belt is a huge waist of space."
+    },
+    {
+      "id": "10",
+      "joke": "Why was 6 afraid of 7? Because 7, 8, 9!"
+    },
+    {
+      "id": "11",
+      "joke": "There are only 10 types of people in the world: those who understand binary, and those who don't."
+    }
+  ]
+}
