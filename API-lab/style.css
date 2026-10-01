@@ -1,28 +1,339 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f4f6fb;
+    color: #151827;
+
+    line-height: 1.6;
+}
+
+
+/* HEADER */
+
+header {
+    background: linear-gradient(
+        135deg,
+        #5b4bdb,
+        #7d5cff,
+        #a66cff
+    );
+
+    color: white;
+
+    padding: 60px 20px;
+}
+
+.small-title {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    margin-bottom: 12px;
+}
+
+.intro {
+    opacity: 0.9;
+    max-width: 620px;
+}
+
+header code {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 2px 7px;
+    border-radius: 5px;
+}
+
+
+/* MAIN */
+
+main {
+    max-width: 1000px;
+    margin: auto;
     padding: 40px 20px;
 }
 
-main {
+
+/* KORT */
+
+.kort {
+    background: white;
+    border: 1px solid #e5e7ef;
+
+    padding: 28px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 28px;
+}
+
+.kort h2 {
+    font-size: 24px;
+    margin-bottom: 14px;
+}
+
+.kort h3 {
+    font-size: 18px;
+    margin: 22px 0 12px;
+}
+
+.kort p {
+    margin-bottom: 12px;
+}
+
+.forklaring {
+    color: #687083;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.liten {
+    color: #687083;
+    font-size: 14px;
+}
+
+code {
+    font-family: Consolas, "Courier New", monospace;
+
+    background: rgba(108, 99, 255, 0.1);
+    color: #4a41c9;
+
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+
+
+/* TABELL */
+
+.tabell {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin: 18px 0;
+}
+
+.tabell th,
+.tabell td {
+    text-align: left;
+
+    padding: 12px 14px;
+
+    border-bottom: 1px solid #e5e7ef;
+
+    font-size: 15px;
+}
+
+.tabell th {
+    background: #f4f6fb;
+    font-weight: bold;
+}
+
+.tabell tr:hover td {
+    background: #fafbff;
+}
+
+
+/* KONTROLLER */
+
+.kontroller {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.kontroller label {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+select {
+    border: 1px solid #e5e7ef;
+    background: white;
+    color: #151827;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #6c63ff;
+}
+
+.knapp {
+    border: none;
+
+    background: #6c63ff;
+    color: white;
+
+    padding: 13px 22px;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.knapp:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+
+/* RESULTAT */
+
+.resultat {
+    border-top: 1px solid #e5e7ef;
+    padding-top: 20px;
+}
+
+.resultat h3 {
+    margin-top: 0;
+}
+
+.vits {
+    background: #f4f6fb;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    border-left: 4px solid #6c63ff;
+
+    margin-bottom: 10px;
+}
+
+.vits strong {
+    color: #6c63ff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.vits p {
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+
+/* VITS MED OPPSETT */
+
+.vits-boks {
+    background: #f4f6fb;
+
+    padding: 30px;
+
+    border-radius: 14px;
+
+    margin-top: 22px;
+
     text-align: center;
 }
 
-button {
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
+#setup {
+    font-size: 20px;
+    font-weight: bold;
+    min-height: 32px;
 }
 
-#resultat {
-    margin-top: 30px;
+.poeng {
+    font-size: 26px;
+    color: #6c63ff;
+    font-weight: bold;
+    margin: 16px 0;
+    min-height: 34px;
+}
+
+
+/* HUND */
+
+.hund-boks {
+    margin-top: 22px;
+
+    text-align: center;
+}
+
+.hund-boks img {
+    max-width: 100%;
+
+    border-radius: 14px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* FEIL */
+
+.feil {
+    background: #fdecec;
+    border: 1px solid #e5484d;
+    border-left: 5px solid #e5484d;
+
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    text-align: left;
+    border-radius: 12px;
 }
 
-hr {
-    margin: 20px 0;
+.feil strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #171827;
+    color: white;
+
+    text-align: center;
+
+    padding: 30px 20px;
+}
+
+
+/* MOBIL */
+
+@media (max-width: 700px) {
+
+    .kort {
+        padding: 20px;
+    }
+
+    .kontroller {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tabell {
+        font-size: 13px;
+    }
+
+    .tabell th,
+    .tabell td {
+        padding: 9px 8px;
+    }
 }

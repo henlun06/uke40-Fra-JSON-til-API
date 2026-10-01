@@ -66,6 +66,45 @@ main {
     margin-bottom: 35px;
 }
 
+.info > div {
+    background: #f4f5f8;
+
+    padding: 22px;
+
+    border-radius: 14px;
+
+    text-align: center;
+}
+
+.info span {
+    font-size: 30px;
+}
+
+.info strong {
+    display: block;
+
+    font-size: 16px;
+    line-height: 1.5;
+
+    margin: 12px 0 8px;
+}
+
+.info p {
+    color: #666;
+    font-size: 15px;
+}
+
+.info small {
+    display: block;
+
+    color: #8a90a0;
+    font-family: Consolas, "Courier New", monospace;
+
+    font-size: 12px;
+
+    margin-top: 10px;
+}
+
 .kort {
     background: white;
 
@@ -89,15 +128,14 @@ main {
 }
 
 
-/* SEKSJONER */
+/* KORT OG SEKSJONER */
 
-.fil,
-.sammenligning {
+.kort {
     background: white;
 
-    padding: 30px;
+    padding: 28px;
 
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 
     border-radius: 15px;
 
@@ -106,15 +144,130 @@ main {
         rgba(0, 0, 0, 0.08);
 }
 
-.fil h2,
-.sammenligning h2 {
-    margin-bottom: 10px;
+.kort h2 {
+    font-size: 22px;
+
+    margin-bottom: 12px;
 }
 
-.fil > p {
+.forklaring {
     color: #666;
-
+    line-height: 1.7;
     margin-bottom: 20px;
+}
+
+.liten {
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.seksjon-tittel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.seksjon-tittel h2 {
+    margin-bottom: 0;
+}
+
+.seksjon-tittel span {
+    color: #666;
+    font-size: 15px;
+}
+
+code {
+    font-family: Consolas, "Courier New", monospace;
+
+    background: rgba(108, 99, 255, 0.12);
+    color: #4a41c9;
+
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+
+
+/* SAMMENLIGNING (Oppgave 4) */
+
+.sammenligning {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.fil {
+    background: #f4f5f8;
+
+    padding: 24px;
+
+    border-radius: 14px;
+
+    border-top: 4px solid #6c63ff;
+}
+
+.fil h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.tag {
+    display: inline-block;
+
+    background: #6c63ff;
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    padding: 4px 10px;
+
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+.egenskaper {
+    list-style: none;
+    margin-bottom: 6px;
+}
+
+.egenskaper li {
+    padding: 7px 0 7px 20px;
+
+    position: relative;
+    font-size: 15px;
+}
+
+.egenskaper li::before {
+    content: "▸";
+    color: #6c63ff;
+
+    position: absolute;
+    left: 0;
+}
+
+.sammenlign-boks {
+    background: #f4f5f8;
+
+    border-left: 4px solid #8f67ff;
+
+    padding: 22px;
+    border-radius: 12px;
+
+    margin-top: 22px;
+}
+
+.sammenlign-boks h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.sammenlign-boks li {
+    margin-bottom: 9px;
+    font-size: 15px;
 }
 
 
@@ -136,11 +289,108 @@ main {
     margin-top: 5px;
 }
 
+.tom {
+    color: #666;
+    font-style: italic;
+    padding: 20px 0;
+}
 
-/* SAMMENLIGNING */
 
-.sammenligning p {
-    margin-top: 12px;
+/* ÉN VITS OM GANGEN */
+
+.vits-boks {
+    background: #f4f5f8;
+
+    padding: 28px;
+
+    border-radius: 14px;
+
+    text-align: center;
+}
+
+.vits-boks p {
+    font-size: 20px;
+    min-height: 60px;
+    margin-bottom: 20px;
+}
+
+.bla-knapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+/* KONTROLLER OG KNAPPER */
+
+.kontroller {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.kontroller label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#sok {
+    width: 100%;
+
+    border: 1px solid #ddd;
+
+    padding: 14px 18px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+}
+
+#sok:focus {
+    outline: none;
+    border-color: #6c63ff;
+}
+
+.knapp {
+    border: none;
+
+    background: #6c63ff;
+    color: white;
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.knapp:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+
+/* FEILMELDING */
+
+.feil-melding {
+    background: #fdecec;
+    border: 1px solid #e5484d;
+    border-left: 5px solid #e5484d;
+
+    padding: 22px;
+    border-radius: 14px;
+
+    margin-bottom: 28px;
 }
 
 
@@ -167,12 +417,23 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .sammenligning {
+        grid-template-columns: 1fr;
+    }
+
     header h1 {
         font-size: 32px;
     }
 
-    .fil,
-    .sammenligning {
+    .kort {
         padding: 20px;
+    }
+
+    .bla-knapper {
+        flex-direction: column;
+    }
+
+    .kontroller {
+        flex-direction: column;
     }
 }

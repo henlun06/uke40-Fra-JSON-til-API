@@ -1,6 +1,14 @@
 // -------------------------
 // OPPGAVE 2: LISTER OG OPPSLAG
 // -------------------------
+//
+// Her tester jeg lister i JavaScript.
+// Resultatene skrives BÅDE ut i konsollen OG på nettsiden.
+
+
+// -------------------------
+// LISTENE
+// -------------------------
 
 // Dette er listen fra oppgaveteksten
 const spill = [
@@ -21,9 +29,37 @@ const startMat = [
 ];
 
 
-// Vi jobber på en kopi, slik at vi alltid
-// kan gå tilbake til startlisten
+// Jeg jobber på en kopi av startlisten, slik at
+// jeg alltid kan gå tilbake til start med nullstill
 let favorittMat = [...startMat];
+
+
+// -------------------------
+// KONSOLLUTSKRIFT
+// -------------------------
+//
+// Dette er den enkleste løsningen oppgaven krever.
+// Trykk F12 i nettleseren for å se utskriften.
+
+console.log("Oppgave 2 – Lister og oppslag");
+console.log("");
+
+console.log("Oppslag i listen 'spill':");
+console.log("Hele listen:", spill);
+console.log("spill[0]     ->", spill[0], "(første)");
+console.log("spill[2]     ->", spill[2], "(tredje)");
+console.log("spill[10]    ->", spill[10], "(finnes ikke!)");
+console.log("spill.length ->", spill.length);
+console.log("");
+
+console.log("Favorittmaten min:");
+console.log("Listen:", favorittMat);
+console.log("Første element:", favorittMat[0]);
+console.log(
+    "Siste element:",
+    favorittMat[favorittMat.length - 1]
+);
+console.log("Antall elementer:", favorittMat.length);
 
 
 // -------------------------
@@ -45,45 +81,29 @@ const nullstill = document.getElementById("nullstill");
 
 
 // -------------------------
-// KONSOLLUTSKRIFT
-// (Dette er den enkleste løsningen
-//  oppgaven krever – jeg kjører den
-//  også for å vise i konsollen)
-// -------------------------
-
-console.log("Oppgave 2 – Lister og oppslag");
-
-console.log("Listen:", spill);
-console.log("spill[0]:", spill[0]);
-console.log("spill[2]:", spill[2]);
-console.log("spill[10]:", spill[10]);
-
-console.log("Første element:", favorittMat[0]);
-console.log(
-    "Siste element:",
-    favorittMat[favorittMat.length - 1]
-);
-console.log("Antall elementer:", favorittMat.length);
-
-
-// -------------------------
 // VISER FØRSTE, SISTE OG ANTALL
 // -------------------------
 
 function visStatistikk() {
 
-    // Ettersom listen kan bli tom, må vi
-    // sjekke at det finnes noe å vise
+    // Listen kan bli tom, så jeg må sjekke
+    // at det finnes noe å vise først
     if (favorittMat.length === 0) {
+
         forsteMat.textContent = "Tom liste";
         sisteMat.textContent = "Tom liste";
+
     } else {
+
         forsteMat.textContent = favorittMat[0];
+
         sisteMat.textContent =
             favorittMat[favorittMat.length - 1];
+
     }
 
     antallMat.textContent = favorittMat.length;
+
 }
 
 
@@ -99,6 +119,7 @@ function visAlle() {
         `${favorittMat.length} elementer`;
 
     if (favorittMat.length === 0) {
+
         matListe.innerHTML = `
             <li class="tom">
                 Listen er tom. Legg til noe fra knappen over.
@@ -106,6 +127,7 @@ function visAlle() {
         `;
 
         return;
+
     }
 
 
@@ -113,22 +135,40 @@ function visAlle() {
     for (const mat of favorittMat) {
 
         const li = document.createElement("li");
+
         li.className = "mat-element";
         li.textContent = mat;
 
         matListe.appendChild(li);
 
     }
+
 }
 
 
 // -------------------------
-// OPPDATERER SIDEN
+// DEAKTIVERER KNAPPER NÅR
+// LISTEN ER TOM
+// -------------------------
+
+function oppdaterKnapper() {
+
+    const erTom = favorittMat.length === 0;
+
+    fjernSiste.disabled = erTom;
+    fjernForste.disabled = erTom;
+
+}
+
+
+// -------------------------
+// OPPDATERER HELE SIDEN
 // -------------------------
 
 function oppdater() {
     visStatistikk();
     visAlle();
+    oppdaterKnapper();
 }
 
 
@@ -136,16 +176,18 @@ function oppdater() {
 // LEGGER TIL ET ELEMENT
 // -------------------------
 
-leggTil.addEventListener("click", () => {
+function leggTilMat() {
 
     const nyMat = matInn.value.trim();
 
     if (nyMat === "") {
         matMelding.textContent =
-            "⚠️ Skriv inn en matrett før du trykker på knappen.";
+            "⚠️ Skriv inn en matrett først.";
+        matInn.focus();
         return;
     }
 
+    // .push() legger til bakerst i listen
     favorittMat.push(nyMat);
 
     console.log("La til:", nyMat);
@@ -155,31 +197,35 @@ leggTil.addEventListener("click", () => {
     matInn.value = "";
 
     oppdater();
+    matInn.focus();
 
-});
+}
+
+leggTil.addEventListener("click", leggTilMat);
 
 
 // Enter-tasten skal også legge til
 matInn.addEventListener("keydown", event => {
     if (event.key === "Enter") {
-        leggTil.click();
+        leggTilMat();
     }
 });
 
 
 // -------------------------
-// FJERNER ELEMENTER
+// FJERNER SISTE ELEMENT
 // -------------------------
 
 fjernSiste.addEventListener("click", () => {
 
     if (favorittMat.length === 0) {
-        matMelding.textContent = "⚠️ Listen er allerede tom.";
+        matMelding.textContent =
+            "⚠️ Listen er allerede tom.";
         return;
     }
 
-    // .pop() fjerner og returnerer
-    // det siste elementet i listen
+    // .pop() fjerner det siste elementet
+    // og gir det tilbake
     const fjernet = favorittMat.pop();
 
     console.log("Fjernet siste:", fjernet);
@@ -191,14 +237,19 @@ fjernSiste.addEventListener("click", () => {
 });
 
 
+// -------------------------
+// FJERNER FØRSTE ELEMENT
+// -------------------------
+
 fjernForste.addEventListener("click", () => {
 
     if (favorittMat.length === 0) {
-        matMelding.textContent = "⚠️ Listen er allerede tom.";
+        matMelding.textContent =
+            "⚠️ Listen er allerede tom.";
         return;
     }
 
-    // splice(plassering, antall) fjerner
+    // .splice(plassering, antall) fjerner
     // element 0 – altså det første
     const fjernet = favorittMat.splice(0, 1)[0];
 
@@ -211,14 +262,20 @@ fjernForste.addEventListener("click", () => {
 });
 
 
+// -------------------------
+// NULLSTILLER LISTEN
+// -------------------------
+
 nullstill.addEventListener("click", () => {
 
     favorittMat = [...startMat];
 
-    matMelding.textContent = "🔄 Listen er tilbake til start.";
-    oppdater();
+    matMelding.textContent =
+        "🔄 Listen er tilbake til start.";
 
     console.log("Nullstilt. Listen:", favorittMat);
+
+    oppdater();
 
 });
 

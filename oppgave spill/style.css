@@ -265,6 +265,14 @@ code {
     filter: brightness(1.08);
 }
 
+.knapp:disabled {
+    background: var(--kant);
+    color: var(--sekundaer);
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+}
+
 .gronn {
     background: var(--gronn);
 }

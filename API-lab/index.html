@@ -1,26 +1,190 @@
 <!DOCTYPE html>
 <html lang="no">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API-lab</title>
+
+    <title>API-lab – Oppgave 6</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <header>
+        <p class="small-title">OPPGAVE 6 – API-LAB</p>
+        <h1>Hente data fra API-er</h1>
+        <p class="intro">
+            Her henter jeg data fra flere API-er med
+            <code>fetch()</code> og viser resultatene på nettsiden.
+        </p>
+    </header>
+
+
     <main>
-        <h1>API-lab</h1>
 
-        <p>Her henter jeg data fra et API.</p>
+        <!-- HVA ER ET API? -->
 
-        <button id="hentVits">Hent vits</button>
+        <section class="kort">
 
-        <div id="resultat">
-            <p>Trykk på knappen for å hente en vits.</p>
-        </div>
+            <h2>💡 Hva er et API?</h2>
+
+            <p>
+                Et API (Application Programming Interface) er en måte for
+                programmer å be andre programmer om data. Jeg sender en
+                forespørsel til en adresse (en URL), og serveren svarer med
+                data – vanligvis i JSON-format.
+            </p>
+
+            <h3>Hva er forskjellen mellom JSON og et API?</h3>
+
+            <table class="tabell">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Lokal JSON-fil</th>
+                        <th>API</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hvor?</strong></td>
+                        <td>Ligger på min egen datamaskin</td>
+                        <td>Ligger på en annen datamaskin (server)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Endres?</strong></td>
+                        <td>Jeg må endre filen manuelt</td>
+                        <td>Serveren oppdaterer seg selv</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trenger internett?</strong></td>
+                        <td>Nei</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Eksempel</strong></td>
+                        <td><code>artist.json</code></td>
+                        <td><code>jokeapi.dev</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="liten">
+                Kort sagt: JSON er <em>formatet</em> på dataene, mens et API
+                er <em>veien</em> jeg får tak i dataene på.
+            </p>
+
+        </section>
+
+
+        <!-- VITSER FRA API -->
+
+        <section class="kort">
+
+            <h2>😂 Vitser fra API</h2>
+
+            <p class="forklaring">
+                Dette er fra <code>v2.jokeapi.dev</code>. Jeg bruker
+                <code>async</code> og <code>await</code>, og jeg sjekker om
+                svaret er OK med <code>response.ok</code>.
+            </p>
+
+            <div class="kontroller">
+
+                <label for="kategori">Kategori:</label>
+
+                <select id="kategori">
+                    <option value="Any">Alle</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Misc">Misc</option>
+                    <option value="Pun">Pun</option>
+                    <option value="Dark">Dark</option>
+                </select>
+
+                <label for="antall">Antall:</label>
+
+                <select id="antall">
+                    <option value="1">1</option>
+                    <option value="3" selected>3</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                </select>
+
+                <button id="hentVits" class="knapp">
+                    Hent vitser
+                </button>
+
+            </div>
+
+            <div id="resultat" class="resultat">
+                <p>Trykk på knappen for å hente en vits.</p>
+            </div>
+
+        </section>
+
+
+        <!-- RANDOM JOKE MED OPPSTILLING -->
+
+        <section class="kort">
+
+            <h2>🎲 En vits av gangen</h2>
+
+            <p class="forklaring">
+                Her henter jeg fra
+                <code>official-joke-api.appspot.com</code>. Disse vitsene er
+                delt i <em>setup</em> (oppsett) og
+                <em>punchline</em> (poeng).
+            </p>
+
+            <button id="hentPunchline" class="knapp">
+                Hent en vits
+            </button>
+
+            <div id="punchlineResultat" class="vits-boks">
+                <p id="setup">Trykk på knappen!</p>
+                <p id="punchline" class="poeng"></p>
+                <p id="punchlineInfo" class="liten"></p>
+            </div>
+
+        </section>
+
+
+        <!-- ET ANNET API -->
+
+        <section class="kort">
+
+            <h2>🐶 Et helt annet API</h2>
+
+            <p class="forklaring">
+                For å vise at et API kan handle om hva som helst, henter jeg
+                et tilfeldig hundebilde fra <code>dog.ceo</code>. API-et gir
+                meg en bilde-lenke i JSON, som jeg setter inn i et
+                <code>&lt;img&gt;</code>-element.
+            </p>
+
+            <button id="hentHund" class="knapp">
+                Hent tilfeldig hund
+            </button>
+
+            <div id="hundResultat" class="hund-boks">
+                <p>Trykk på knappen!</p>
+            </div>
+
+        </section>
+
     </main>
 
+
+    <footer>
+        <p>Oppgave 6 – API-lab</p>
+        <p>Laget med HTML, CSS og JavaScript</p>
+    </footer>
+
+
     <script src="script.js"></script>
+
 </body>
+
 </html>
